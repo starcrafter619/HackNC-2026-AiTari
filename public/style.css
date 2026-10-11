@@ -70,3 +70,53 @@ button { font: inherit; cursor: pointer; border: 0; }
 .notes-card textarea { flex: 1; resize: none; border: 2px solid #2c7290; border-radius: 12px; padding: 14px; font: 16px/1.5 "Space Mono", monospace; }
 .notes-card .controls { justify-content: flex-start; }
 #saved { color: #076400; font-weight: 700; }
+
+/* ===== v2 additions ===== */
+.navlink { background: none; padding: 0; cursor: pointer; }
+.icard { background: none; padding: 0; transition: transform .15s; }
+.icard img { width: 100%; height: 100%; display: block; }
+.icard.clock img { border-radius: 22%; }
+.icard:hover { transform: scale(1.05); }
+.lbl { pointer-events: none; white-space: nowrap; }
+.homebtn { background: none; padding: 0; transition: transform .15s; }
+.homebtn:hover { transform: scale(1.1); }
+.homebtn img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.hint { text-align: center; font: 14px "Space Mono", monospace; color: #000050; }
+
+/* leaf coin counter */
+.coin { background: #36f; border-radius: 999px; display: flex; align-items: center; gap: calc(var(--h) * .2px);
+  padding: 0 calc(var(--h) * .22px) 0 calc(var(--h) * .1px); color: #fff; font: 700 calc(var(--h) * .42px) "Space Mono", monospace; box-shadow: 2px 3px 4px #0005; }
+.coin i { width: calc(var(--h) * .8px); height: calc(var(--h) * .8px); background: #fff; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.coin i img { width: 62%; transform: rotate(29deg); }
+.coin.bump { animation: bump .5s; }
+@keyframes bump { 40% { transform: scale(1.18); } }
+
+/* mascot + avatar with accessories */
+#mascot img:first-child, #avatar img:first-child { width: 100%; height: 100%; object-fit: contain; display: block; }
+.acc { position: absolute; transform: translate(-50%, -50%); pointer-events: none; filter: drop-shadow(2px 3px 3px #0004); }
+
+/* chat quiz */
+#chat { height: calc(100% - 110px); padding-bottom: 0; }
+#chat .quiz { background: #f7f8fb; align-self: flex-start; padding: 10px 12px; border-radius: 12px; max-width: 95%; }
+.quiz .opts button { display: block; width: 100%; text-align: left; background: #fff; border: 2px solid #076400; border-radius: 10px; padding: 8px 10px; margin-top: 6px; font: 13px "Space Mono", monospace; }
+.quiz .opts button:not(:disabled):hover { background: #e3f8e0; }
+.quiz .opts button.right { background: #9fe89a; }
+.quiz .opts button.wrong { background: #f6a3a3; }
+.quiz .next { margin-top: 8px; background: #076400; color: #fff; padding: 7px 12px; border-radius: 10px; font: 700 13px "Space Mono", monospace; }
+.quizbtn { position: absolute; left: 20px; bottom: 86px; background: #076400; color: #fff; padding: 9px 16px; border-radius: 12px; font: 700 14px "Space Mono", monospace; box-shadow: 3px 3px 4px #0005; }
+
+/* shop */
+.slot { position: absolute; width: 185px; height: 185px; background: #fff; border-radius: 14px; padding: 0; transition: transform .15s; }
+.slot:hover { transform: scale(1.04); }
+.slot > img { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); max-width: 125px; max-height: 105px; }
+.slot .nm { position: absolute; left: 6px; right: 6px; bottom: 9px; font: 400 13px/1.3 "Stalinist One", sans-serif; color: #36f; text-align: center; }
+.slot .tag { position: absolute; top: 8px; right: 8px; font: 700 11px "Space Mono", monospace; padding: 3px 8px; border-radius: 99px; background: #36f; color: #fff; display: flex; align-items: center; gap: 4px; }
+.slot .tag img { width: 11px; }
+.slot.locked > img { filter: grayscale(.85); opacity: .55; }
+.slot.on { outline: 5px solid #5edcdc; }
+.slot.on .tag { background: #076400; }
+.slot.shake { animation: shake .4s; }
+@keyframes shake { 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+#toast { position: absolute; left: 50%; top: 84px; transform: translate(-50%, 0); background: #36f; color: #fff; padding: 10px 20px;
+  border-radius: 99px; font: 700 16px "Space Mono", monospace; opacity: 0; transition: .3s; pointer-events: none; z-index: 9; white-space: nowrap; }
+#toast.show { opacity: 1; transform: translate(-50%, 12px); }
