@@ -1,23 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Study Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AiTari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Sometype+Mono&family=Stalinist+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Pomodoro Timer</h2>
-  <input id="minutes" type="number" value="25" min="1" /> minutes
-  <button id="startBtn">Start</button>
-  <div id="timer" style="font-size: 2rem;">25:00</div>
+<!-- Everything lives on a 1280x800 stage (same size as your Penpot boards) that scales to fit the window.
+     Positions come straight from Penpot: --x --y --w --h -->
+<div id="stage">
 
-  <h2>Your Notes</h2>
-  <textarea id="notes" rows="8" cols="60" placeholder="Paste your study notes here..."></textarea>
+  <!-- 1. OPENING -->
+  <section class="screen active" id="opening" style="background:#232323">
+    <h1 class="a press" style="--x:195;--y:130;--w:890;--h:107">PRESS CARTRIDGE TO START</h1>
+    <button class="a cartridge" id="cartridge" aria-label="Start" style="--x:334;--y:257;--w:612;--h:517">
+      <i class="a block1" style="--x:102;--y:0;--w:127;--h:488"></i>
+      <i class="a block2" style="--x:102;--y:0;--w:127;--h:102"></i>
+      <i class="a lines" style="--x:102;--y:11;--w:127;--h:351"></i>
+      <i class="a gbg" style="--x:245;--y:0;--w:292;--h:390"></i>
+      <i class="a gimg" style="--x:260;--y:40;--w:261;--h:350"></i>
+      <img class="a" src="img/bubbles-34b2.png" alt="" style="--x:260;--y:60;--w:260;--h:260" />
+      <span class="a title" style="--x:316;--y:52;--w:254;--h:70">AiTari</span>
+    </button>
+  </section>
 
-  <h2>Chat</h2>
-  <div id="chat" style="border:1px solid #ccc; height:250px; overflow-y:auto; padding:8px;"></div>
-  <input id="message" placeholder="Ask about your notes..." size="50" />
-  <button id="sendBtn">Send</button>
+  <!-- 2. HOMEPAGE -->
+  <section class="screen" id="home" style="background:#ebecee">
+    <img class="a" src="img/water_59-a116.jpg" alt="" style="--x:-25;--y:-49;--w:1469;--h:976" />
+    <div class="a" style="--x:0;--y:657;--w:1280;--h:143;background:#B1B2B5"></div>
+    <div class="a" style="--x:-66;--y:581;--w:260;--h:163;background:#B1B2B5;border-radius:100px"></div>
+    <div class="a" style="--x:1082;--y:583;--w:260;--h:163;background:#B1B2B5;border-radius:100px"></div>
 
-  <script src="script.js"></script>
+    <button class="a card" data-go="pomodoro" style="--x:97;--y:169;--w:332;--h:324;background:#223cf7">
+      <span style="color:#d6ecff">POMODORO Timer</span></button>
+    <button class="a card" data-go="learn" style="--x:487;--y:169;--w:320;--h:320;background:#00b6c4">
+      <span style="color:#60ebfd">Learn with Mascot</span></button>
+    <button class="a card" data-go="notes" style="--x:864;--y:168;--w:320;--h:320;background:#12b893">
+      <span style="color:#0ef783">Import Notes</span></button>
+
+    <div class="a" style="--x:260;--y:676;--w:464;--h:63;background:#b58287;border-radius:20px"></div>
+    <div class="a dpad" style="--x:269;--y:676;--w:65;--h:68"><i style="left:16px;top:10px;width:30px;height:30px"></i><i style="left:8px;top:32px;width:47px;height:47px"></i></div>
+    <span class="a mono" style="--x:352;--y:698;color:#fff7f9">AiTari</span>
+    <span class="a mono" style="--x:462;--y:697;color:#eafffa">Profile</span>
+    <span class="a mono" style="--x:596;--y:697;color:#fff0f0">Settings</span>
+    <div class="a" style="--x:747;--y:682;--w:267;--h:42;background:#b50008;border-radius:20px"></div>
+  </section>
+
+  <!-- 3. POMODORO -->
+  <section class="screen" id="pomodoro" style="background:#d3e9fd">
+    <img class="a" src="img/water_12-c925.png" alt="" style="--x:-12;--y:-225;--w:1394;--h:1394" />
+    <h2 class="a stal" style="--x:238;--y:81;--w:804;--h:70;color:#5edcdc;font-size:48px">POMODORO Timer</h2>
+    <div class="a timer-card" style="--x:310;--y:276;--w:661;--h:248">
+      <div class="modes">
+        <button data-mode="25" class="on">Focus</button><span>|</span>
+        <button data-mode="5">Short Break</button><span>|</span>
+        <button data-mode="15">Long Break</button>
+      </div>
+      <div id="time">25:00</div>
+      <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="resetBtn">Reset</button>
+        <label>Minutes <input id="minutes" type="number" min="1" max="180" value="25" /></label>
+      </div>
+    </div>
+    <div class="a navbar" style="--x:310;--y:659;--w:661;--h:63">
+      <span class="mono" style="left:102px">Themes</span><span class="mono" style="left:273px">Profile</span><span class="mono" style="left:456px">Settings</span>
+    </div>
+    <button class="a back" data-go="home" aria-label="Back"></button>
+  </section>
+
+  <!-- 4. MASCOT LEARN -->
+  <section class="screen" id="learn" style="background:#d3e9fd">
+    <img class="a" src="img/image-from-rawpixel-id-6117992-png-79cf.png" alt="" style="--x:-147;--y:135;--w:625;--h:342" />
+    <img class="a" src="img/image-from-rawpixel-id-6117992-png-f05a.png" alt="" style="--x:909;--y:-76;--w:625;--h:342" />
+    <img class="a" src="img/image-from-rawpixel-id-6117992-png-44db.png" alt="" style="--x:564;--y:122;--w:527;--h:288;transform:rotate(346.7deg)" />
+    <img class="a" src="img/grass-c66f.png" alt="" style="--x:-98;--y:389;--w:1408;--h:792" />
+    <img class="a" src="img/bubbles-34b2.png" alt="Mascot" style="--x:84;--y:118;--w:556;--h:556" />
+    <div class="a panel" style="--x:762;--y:48;--w:460;--h:696">
+      <div id="chat"><p class="bot">Hi! Add your notes on the Import Notes screen, then ask me anything or say "quiz me".</p></div>
+    </div>
+    <div class="a chatbox" style="--x:787;--y:668;--w:412;--h:54">
+      <input id="message" placeholder="Ask about your notes..." autocomplete="off" />
+      <button id="sendBtn">Send</button>
+    </div>
+    <div class="a pill" id="notesStatus" style="--x:46;--y:711;--w:267;--h:42">No notes yet</div>
+    <button class="a back" data-go="home" aria-label="Back"></button>
+  </section>
+
+  <!-- 5. IMPORT NOTES -->
+  <section class="screen" id="notes" style="background:#d3e9fd">
+    <img class="a" src="img/image-7efa.jpg" alt="" style="--x:1;--y:0;--w:1280;--h:1790;object-fit:cover" />
+    <div class="a tab" style="--x:43;--y:342;--w:79;--h:261"></div>
+    <h2 class="a stal" style="--x:240;--y:70;--w:800;--h:60;color:#0ef783;font-size:36px">Import Notes</h2>
+    <div class="a notes-card" style="--x:240;--y:150;--w:800;--h:520">
+      <textarea id="notesText" placeholder="Paste your study notes here..."></textarea>
+      <div class="controls">
+        <label class="filebtn">Load .txt / .md<input id="file" type="file" accept=".txt,.md,text/plain" hidden /></label>
+        <button id="saveNotes">Save notes</button>
+        <button id="clearNotes">Clear</button>
+        <span id="saved"></span>
+      </div>
+    </div>
+    <button class="a back" data-go="home" aria-label="Back"></button>
+  </section>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

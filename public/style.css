@@ -1,0 +1,72 @@
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; background: #111; overflow: hidden; }
+
+#stage { position: absolute; left: 50%; top: 50%; width: 1280px; height: 800px;
+  transform-origin: 0 0; overflow: hidden; }
+.screen { position: absolute; inset: 0; overflow: hidden; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.screen.active { opacity: 1; pointer-events: auto; }
+
+/* Penpot position helper: --x --y --w --h */
+.a { position: absolute; left: calc(var(--x) * 1px); top: calc(var(--y) * 1px);
+  width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); }
+img.a { display: block; max-width: none; }
+button { font: inherit; cursor: pointer; border: 0; }
+
+.stal  { font-family: "Stalinist One", sans-serif; -webkit-text-stroke: 1px #000; text-shadow: 4px 4px 4px #000; font-weight: 400; }
+.mono  { position: absolute; font-family: "Space Mono", monospace; font-size: 18px; }
+.press { font: 400 40px/1.2 "Press Start 2P", monospace; letter-spacing: -3px; color: #7bd650; text-shadow: 4px 4px 5px #000; }
+
+/* Opening: cartridge */
+.cartridge { background: #B1B2B5; box-shadow: 2px 25px 10px #000; padding: 0; transition: transform .15s; }
+.cartridge:hover { transform: translateY(-8px); }
+.cartridge i { display: block; }
+.block1 { background: #979799; box-shadow: -.5px -20px 10px #000; }
+.block2 { background: #333334; box-shadow: -10px -10px 18px #232323; }
+.lines { background: repeating-linear-gradient(#0000 0 15px, #6d6d6f 15px 17px); }
+.gbg { background: #363636; }
+.gimg { background: #10e5e5; }
+.title { font: 400 26px/70px "Stalinist One", sans-serif; color: #d6ecff; -webkit-text-stroke: 1px #000; text-shadow: 4px 4px 4px #000; text-align: left; }
+
+/* Home */
+.card { border-radius: 10px; box-shadow: 4px 4px 4px #000; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; transition: transform .15s; }
+.card:hover { transform: scale(1.04); }
+.card span { font: 400 26px/1.4 "Stalinist One", sans-serif; -webkit-text-stroke: 1px #000; text-shadow: 4px 4px 4px #000; }
+.dpad { background: #cdced2; border-radius: 50%; }
+.dpad i { position: absolute; background: #B1B2B5; border-radius: 50%; }
+
+/* Back button (arrow image, rotated to point left) */
+.back { --x: 1; --y: -25; --w: 187; --h: 187; background: url("img/Back-button-88f3.png") center/contain no-repeat;
+  transform: rotate(-90deg); filter: drop-shadow(-10px 2px 10px #000); }
+.back:hover { filter: drop-shadow(-10px 2px 10px #000) brightness(1.15); }
+
+/* Pomodoro */
+.timer-card { background: #f0e6ed; border: 25px solid #000050; border-radius: 20px; padding: 0 10px;
+  display: flex; flex-direction: column; justify-content: space-between; padding-block: 10px; }
+.modes { display: flex; gap: 14px; justify-content: center; font: 24px "Sometype Mono", monospace; color: #b3adb8; }
+.modes button { background: none; color: inherit; font: inherit; padding: 0; }
+.modes button.on { color: #000050; text-decoration: underline; }
+#time { font: 400 64px/1 "Press Start 2P", monospace; color: #000050; text-align: center; }
+.controls { display: flex; gap: 10px; justify-content: center; align-items: center; font: 14px "Space Mono", monospace; color: #000050; }
+.controls button, .filebtn { background: #000050; color: #fff; padding: 8px 14px; border-radius: 10px; font: 700 14px "Space Mono", monospace; cursor: pointer; }
+.controls button:hover, .filebtn:hover { background: #223cf7; }
+.controls input { width: 62px; padding: 6px; border: 2px solid #000050; border-radius: 8px; font: inherit; }
+.navbar { background: #5edcdc; border-radius: 20px; }
+.navbar .mono { top: 16px; font-size: 24px; color: #fff7f9; }
+
+/* Mascot chat */
+.panel { background: #86ddf4; border-radius: 15px; box-shadow: 10px 7px 10px #000; padding: 20px; }
+#chat { height: 100%; padding-bottom: 70px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font: 14px/1.5 "Space Mono", monospace; }
+#chat p { padding: 10px 12px; border-radius: 12px; max-width: 90%; white-space: pre-wrap; }
+#chat .bot { background: #f7f8fb; align-self: flex-start; }
+#chat .me { background: #076400; color: #fff; align-self: flex-end; }
+.chatbox { background: #f7f8fb; border-radius: 10px; box-shadow: 4px 4px 4px #000; display: flex; overflow: hidden; }
+.chatbox input { flex: 1; border: 0; padding: 0 14px; font: 14px "Space Mono", monospace; background: none; outline: 0; }
+.chatbox button { background: #076400; color: #fff; padding: 0 16px; font: 700 14px "Space Mono", monospace; }
+.pill { background: #076400; color: #fff; border-radius: 20px; font: 14px/42px "Space Mono", monospace; text-align: center; }
+
+/* Import notes */
+.tab { background: #2c7290; border-radius: 20px; }
+.notes-card { background: rgba(255,255,255,.88); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 4px 4px 4px #000; }
+.notes-card textarea { flex: 1; resize: none; border: 2px solid #2c7290; border-radius: 12px; padding: 14px; font: 16px/1.5 "Space Mono", monospace; }
+.notes-card .controls { justify-content: flex-start; }
+#saved { color: #076400; font-weight: 700; }
