@@ -19,4 +19,4 @@ As the theme is Frutiger Aero, we thought about some classic icons of the early 
 3. JavaScript, Node.js, HTML, CSS - Main coding languages for the program. 
 
 # AI usage
-We primarily used Gemini Pro and Claude to work on this project. Initially we used Claude to understand and develop starter code for making the API work for our context. But then we realized it would be better to use Gemini since the API is literally Gemini API and the LLM would probably know better about the API than Claude. Which then helped us finally make the API work.
+We primarily used Gemini Pro and Claude to work on this project. Initially we used Claude to understand and develop starter code for making the API work for our context. But then we realized it would be better to use Gemini since the API is literally Gemini API and the LLM would probably know better about the API than Claude. Which then helped us finally make the API work. We also used it to identify and easily deploy the program into a publicly visible website.
