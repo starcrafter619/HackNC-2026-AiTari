@@ -1,20 +1,26 @@
 # AiTari
 By: Ananya Bandaru, Karissah Yap, Sreeja Marupalli, Anahitha Raffe Sofia
 
+# Web Link
+[https://hacknc-2026-aitari.onrender.com/](https://hacknc-2026-aitari.onrender.com/)
+
+# Github Repo
+[https://github.com/starcrafter619/HackNC-2026-AiTari](https://github.com/starcrafter619/HackNC-2026-AiTari)
+
 # What is our project?
-Our project is a study tool that combines the commonly used pomodoro timers and an AI chatbot that can help "tutor" the user. The user will be able to input their own notes, which will then be read by the chatbot, powered by Gemini API, to respond to questions by the user. The chatbot runs like any other chatbot, but mostly using your own notes to help you study, similar to NotebookLM. The biggest difference between something like NotebookLm and AiTari is the fun, whimsical ways of learning and answering questions to get points to later redeem as accessories for your character. The chatbot can also create quizzes and summarized study guides to help you study as well.
+Our project is a study tool that combines the commonly used pomodoro timers and an AI chatbot that can help "tutor" the user. The user will be able to input their own notes, which will then be read by the chatbot, powered by Gemini API, to respond to questions by the user. The chatbot runs like any other, but focuses on using your own notes to help you study, similar to NotebookLM. The biggest difference between something like NotebookLm and AiTari is the fun, whimsical way of learning and answering questions to get points to later redeem as accessories for your character. The tutor can also create quizzes and summarized study guides to help you study as well.
 
 # Inspiration
-As the theme is Frutiger Aero, we thought about some classic icons of the early 2000s. One of them being retro gaming consoles like GameCube or Nintendo Entertainment Systems. We ended up choosing Wii, which is a console where you insert a game card/cartridge to play on a television, and we based the interface based on that. For our name we also used the classic game Atari as our inspiration and named our group and program name to "AiTari" combining Atari and AI. Our opening splash screen was also based off of this.
+As the theme is Frutiger Aero, we thought about some classic icons of the early 2000s. One of them being retro gaming consoles like GameCube or Nintendo Entertainment Systems. We ended up choosing Wii, which is a console where you insert a game card/cartridge to play on a television. For our name we also used the classic game Atari as our inspiration and named our group and program name to "AiTari" combining Atari and AI. Our opening splash screen was also based off of this idea of inserting a cartidge. This tool was also built using our own wants in a study tool.
 
 # Key Features Summary
 1. AI tutor
 2. Pomodoro timer
 3. Notes Hub - A place to put all your notes, you can even upload txt and .md files to save time.
-4. Character Customization using points, called ecopoints, redeemed from answering question based off of notes.
+4. Character Customization using points, called ecopoint leaves, redeemed from answering questions formed from the information in the Notes Hub.
 
 # How we built it
-We first created a visual outline of how we wanted the UI/UX to look using PenPot. PenPot is an open-source software similar to figma, and using the .penpot file from those designs, we used Claude to convert it to HTML and CSS files. Claude helped us improve our idea by implementing things like the ability to upload a .txt or .md file and the interface for the chatbot when you ask it to make you a quiz. We then used our knowledge about Gemini API to then implement it in the app, continuing to use Gemini and Claude to assist in the complete implementation and making sure it will continue to work as necessary. We then pushed everything to a github repo, which we then used Render, a web deployment software, to make public the website. Using Render allowed us to easily make sure the API is still connected to the website.
+We first created a visual outline of how we wanted the UI/UX to look using PenPot. PenPot is an open-source software similar to figma, and using the .penpot file from those designs, we used Claude to convert it to HTML and CSS files. Claude helped us improve our idea by implementing things like the ability to upload a .txt or .md file and the interface for the chatbot when you ask it to make you a quiz. We then used our knowledge about the Gemini API to then implement it in the app, continuing to use Gemini and Claude to assist in the complete implementation and making sure it will continue to work as necessary. We then pushed everything to a github repo, which we then used Render, a web deployment software, to make the website public. Using Render allowed us to make sure the API is still connected to the website.
 
 # Main tools used
 1. Penpot - Tool used to create the UI for the program. We used its features to turn it into code and then implemented the API into that code and updated the visual components as necessary.
@@ -25,20 +31,20 @@ We first created a visual outline of how we wanted the UI/UX to look using PenPo
 6. Gemini Pro - to further understand APIs and how to implement Geminis API to be a simple chatbot that reads notes like their own NotebookLM would.
 
 # Challenges we ran into
-At first we were unable to make a collaborative file on Figma, which is when we switched to penpot, which in turn made it easier for us to implement the Gemini API Key. However, while trying to get a Gemini API Key, we had issues with the version we were using for the AI bot to work and how it was connected locally on our devices before we made the full website. We were able to fix these issues with API using the documentation and Gemini itself.
+At first we were unable to make a collaborative file on Figma, which is when we switched to penpot, which in turn made it easier for us to implement the Gemini API Key. However, while trying to get a Gemini API Key, we had issues with the version we were using for the AI bot to work and how it was connected locally on our devices before we made the full website. We were able to fix these issues with the API using the documentation and Gemini itself. We also ran into issues converting the .penpot into HTML and CSS but thanks to help of Claude we were able to successfully convert them and add our API.
 
 # Accomplishments that we're proud of
-Honestly, just making the project happen and having it work out for the best. We are also proud of the knowledge we have gained from this project as it is truly impactful experience for not just future hackathons but real world experience as well.
+Honestly, just making the project happen and having it work out for the best. We are also proud of the knowledge we have gained from this project as it is truly an impactful experience for not just future hackathons but real world experience as well.
 
 # What we learned
-We learned the ways of AI and how it can help not only solve problems but help find ways to make your solution better. Our key role in this project was the creative ideas and UI/UX. The AI's main role took place in assisting us in learning of things like API and how to create better UI/UX. 
+We learned the ways of AI and how it can help not only solve problems but help find ways to make your solution better. Our key role in this project was the creative ideas and UI/UX. The AI's main role took place in assisting us in the learning of things like API and how to implement our ideas better. 
 
 # What's next
-AiTari can become a well-made platform for students all over the world to use with proper knowledge of servers and AI implementation processes. We plan on continuing to develop on this idea to eventually make it global :)
+AiTari can become a well-made platform for students all over the world to use with proper knowledge of servers and AI implementation processes. We plan on continuing to develop on this idea to eventually make it global, as well as creating more tools like task manager, to make it an all-in-one type of software :)
 
 # Additional Sources for design and icons
-1. https://frutigeraeroarchive.org
-2. https://frutiger-aero.org/icons 
+1. [https://frutigeraeroarchive.org](https://frutigeraeroarchive.org)
+2. [https://frutiger-aero.org/icons](https://frutiger-aero.org/icons)
 
 # AI usage
-We primarily used Gemini Pro and Claude to work on this project. Initially we used Claude to understand and develop starter code for making the API work for our context. But then we realized it would be better to use Gemini since the API is literally Gemini API and the LLM would probably know better about the API than Claude. Which then helped us finally make the API work. We also used it to identify and easily deploy the program into a publicly visible website. 
+We primarily used Gemini Pro and Claude to work on this project. Initially we used Claude to understand and develop starter code for making the API work for our context. But then we realized it would be better to use Gemini since the API is literally Gemini API itself and the LLM probably knows itself better than Claude. Switching to Gemini gave us the exact documentation and debugging help we needed to finally get our chat integration working perfectly. It also acted as our DevOps guide, helping us figure out how to deploy our local Node server to the web so everyone could see it.
