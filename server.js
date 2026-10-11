@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const ai = new GoogleGenAI({}); // reads GEMINI_API_KEY from the environment
-const MODEL = "gemini-3.8-flash"; // keep whatever model name worked for you before
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite"; // change in Render > Environment, no code edit needed
 
 const shuffle = (a) => a.map((v) => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map((p) => p[1]);
 

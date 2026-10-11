@@ -36,9 +36,9 @@
     <button class="a icard clock" data-go="pomodoro" aria-label="Pomodoro" style="--x:97;--y:160;--w:332;--h:332"><img src="img/clock-icon.jpg" alt="" /></button>
     <button class="a icard" data-go="learn" aria-label="Learn with Mascot" style="--x:486;--y:168;--w:320;--h:320"><img src="img/chat-icon.png" alt="" /></button>
     <button class="a icard" data-go="notes" aria-label="Import Notes" style="--x:845;--y:168;--w:320;--h:320"><img src="img/cloud-icon.png" alt="" /></button>
-    <span class="a stal lbl" style="--x:135;--y:341;color:#1229ad;font-size:24px">POMODORO Timer</span>
-    <span class="a stal lbl" style="--x:519;--y:275;color:#7760fd;font-size:26px">Learn with Mascot</span>
-    <span class="a stal lbl" style="--x:920;--y:342;color:#0d22f7;font-size:26px">Import Notes</span>
+    <span class="a stal lbl" style="--x:97;--y:160;--w:332;--h:332;color:#1229ad;font-size:24px">POMODORO Timer</span>
+    <span class="a stal lbl" style="--x:486;--y:168;--w:320;--h:320;color:#7760fd;font-size:26px">Learn with Mascot</span>
+    <span class="a stal lbl" style="--x:845;--y:168;--w:320;--h:320;color:#0d22f7;font-size:26px">Import Notes</span>
     <div class="a" style="--x:289;--y:676;--w:464;--h:63;background:#36f;border-radius:20px"></div>
     <div class="a dpad" style="--x:298;--y:676;--w:65;--h:68"><i style="left:16px;top:10px;width:30px;height:30px"></i><i style="left:8px;top:32px;width:47px;height:47px"></i></div>
     <button class="a mono navlink" data-go="opening" style="--x:381;--y:698;color:#fff7f9">AiTari</button>
@@ -88,7 +88,7 @@
       <input id="message" placeholder="Ask about your notes..." autocomplete="off" />
       <button id="sendBtn">Send</button>
     </div>
-    <div class="a pill" id="notesStatus" style="--x:46;--y:711;--w:267;--h:42">No notes yet</div>
+    <div class="a pill" style="--x:46;--y:711;--w:267;--h:42"></div>
     <div class="a" id="mascot" style="--x:113;--y:95;--w:627;--h:838"><img src="img/mascot.png" alt="Mascot" /></div>
     <div class="a coin" style="--x:553;--y:20;--w:173;--h:52"><i><img src="img/leaf.png" alt="" /></i><b data-coins>0</b></div>
     <button class="a back" data-go="home" aria-label="Back"></button>
@@ -115,7 +115,7 @@
   <!-- 6. CHARACTER CUSTOMIZATION / SHOP -->
   <section class="screen" id="shop" style="background:#fff">
     <img class="a" src="img/shop-bg.jpg" alt="" style="--x:0;--y:-11;--w:1298;--h:811" />
-    <div class="a" id="avatar" style="--x:-17;--y:68;--w:739;--h:739"><img src="img/avatar.png" alt="Your character" /></div>
+    <div class="a" id="avatar" style="--x:-17;--y:68;--w:739;--h:739"><img id="avatarImg" src="img/avatar.png" alt="Your character" /></div>
     <div class="a" style="--x:701;--y:46;--w:536;--h:708;background:#86ddf4;border-radius:15px;box-shadow:10px 7px 10px #0006"></div>
     <div id="slots"></div>
     <div class="a coin" style="--x:883;--y:20;--w:173;--h:52"><i><img src="img/leaf.png" alt="" /></i><b data-coins>0</b></div>

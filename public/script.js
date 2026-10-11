@@ -23,15 +23,10 @@ let notes = "";
 try { notes = localStorage.getItem("aitari-notes") || ""; } catch {}
 $("notesText").value = notes;
 
-function updateStatus() {
-  $("notesStatus").textContent = notes.trim() ? `Notes loaded (${notes.length} chars)` : "No notes yet";
-}
-updateStatus();
 
 $("saveNotes").addEventListener("click", () => {
   notes = $("notesText").value;
   try { localStorage.setItem("aitari-notes", notes); } catch {}
-  updateStatus();
   $("saved").textContent = "Saved!";
   setTimeout(() => ($("saved").textContent = ""), 1500);
 });
@@ -123,24 +118,19 @@ $("message").addEventListener("keydown", (e) => e.key === "Enter" && send());
 const COINS_PER_5MIN = 5;     // per 5 focused minutes on the timer
 const COINS_PER_CORRECT = 3;  // per correct quiz answer
 
-// x,y = slot position from Penpot. For "head" items: w = width (in head-widths),
-// ax = sideways offset, k = height offset from the top of the head. Tweak these to fit your art!
+// x,y = slot position from Penpot. Each item has a matching character picture: img/avatar-<id>.png
 const ITEMS = [
-  { id: "buns",      name: "Bubble Buns",        price: 0,  x: 736,  y: 85,  group: "head", w: 1.2,  ax: 0,   k: 0.5 },
-  { id: "spikes",    name: "Bubble Spikes",      price: 0,  x: 1019, y: 84,  group: "head", w: 1.0,  ax: 0,   k: 0.02 },
-  { id: "fish",      name: "Bubble The Fish",    price: 15, x: 737,  y: 310, group: "pet" },
-  { id: "leaf",      name: "Leaf Hat",           price: 20, x: 1019, y: 310, group: "head", w: 0.42, ax: 0,   k: -0.08 },
-  { id: "sunflower", name: "Sunflower",          price: 25, x: 737,  y: 535, group: "head", w: 0.5,  ax: 0.32, k: 0.02 },
-  { id: "greenleaf", name: "Leaf Hat But Green", price: 30, x: 1019, y: 538, group: "head", w: 0.42, ax: 0,   k: -0.08 },
+  { id: "buns",      name: "Bubble Buns",        price: 0,  x: 736,  y: 85 },
+  { id: "spikes",    name: "Bubble Spikes",      price: 0,  x: 1019, y: 84 },
+  { id: "fish",      name: "Bubble The Fish",    price: 15, x: 737,  y: 310 },
+  { id: "leaf",      name: "Leaf Hat",           price: 20, x: 1019, y: 310 },
+  { id: "sunflower", name: "Sunflower",          price: 25, x: 737,  y: 535 },
+  { id: "greenleaf", name: "Leaf Hat But Green", price: 30, x: 1019, y: 538 },
 ];
-// head position inside each character image (stage px): centre x, top y, head width
-const HEADS = {
-  avatar: { el: $("avatar"), W: 739, H: 739, cx: 369, top: 85, hw: 315, petX: 0.82, petY: 0.62, petW: 0.6 },
-  mascot: { el: $("mascot"), W: 627, H: 838, cx: 352, top: 59, hw: 315, petX: 0.86, petY: 0.55, petW: 0.5 },
-};
 
 let game = { coins: 0, owned: ["buns", "spikes"], equipped: [] };
 try { Object.assign(game, JSON.parse(localStorage.getItem("aitari-game") || "{}")); } catch {}
+game.equipped = (game.equipped || []).slice(-1); // one look at a time
 const saveGame = () => { try { localStorage.setItem("aitari-game", JSON.stringify(game)); } catch {} };
 
 let toastT;
@@ -154,24 +144,9 @@ function addCoins(n, why) {
   document.querySelectorAll(".coin").forEach((c) => { c.classList.remove("bump"); void c.offsetWidth; c.classList.add("bump"); });
 }
 
-function drawAccessories() {
-  for (const h of Object.values(HEADS)) {
-    h.el.querySelectorAll(".acc").forEach((a) => a.remove());
-    for (const id of game.equipped) {
-      const it = ITEMS.find((i) => i.id === id), img = document.createElement("img");
-      img.className = "acc"; img.src = `img/${id}.png`; img.alt = it.name;
-      if (it.group === "head") {
-        img.style.width = it.w * h.hw + "px";
-        img.style.left = h.cx + it.ax * h.hw + "px";
-        img.style.top = h.top + it.k * h.hw + "px";
-      } else {
-        img.style.width = h.petW * h.hw * 0.5 + "px";
-        img.style.left = h.petX * h.W + "px";
-        img.style.top = h.petY * h.H + "px";
-      }
-      h.el.appendChild(img);
-    }
-  }
+function drawAvatar() {
+  const id = game.equipped[0];
+  $("avatarImg").src = id ? `img/avatar-${id}.png` : "img/avatar.png";
 }
 
 function buildShop() {
@@ -195,17 +170,12 @@ function onSlot(it, b) {
     }
     game.coins -= it.price; game.owned.push(it.id); toast(`Unlocked ${it.name}!`);
   }
-  if (game.equipped.includes(it.id)) game.equipped = game.equipped.filter((i) => i !== it.id);
-  else {
-    // only one head accessory at a time
-    if (it.group === "head") game.equipped = game.equipped.filter((i) => ITEMS.find((x) => x.id === i).group !== "head");
-    game.equipped.push(it.id);
-  }
+  game.equipped = game.equipped.includes(it.id) ? [] : [it.id]; // tap again to take it off
   saveGame(); refresh();
 }
 function refresh() {
   document.querySelectorAll("[data-coins]").forEach((e) => (e.textContent = game.coins));
-  buildShop(); drawAccessories();
+  buildShop(); drawAvatar();
 }
 refresh();
 
